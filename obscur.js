@@ -28,6 +28,8 @@ class Trazo {
         this.colorTrazo = 255;
     }
 
+    ultimaDireccion = 'inicial';
+
     // devuelve una cantidad de segmentos para el trazo
     // :number
     segmentos() {
@@ -71,25 +73,32 @@ class Trazo {
         let vert = this.largoSegmentoVertical();
         let hor = this.largoSegmentoHorizontal();
         let direccion = random(direcciones);
-        
+       
+        while(direccion == this.ultimaDireccion) {
+            direccion = random(direcciones);
+        }
 
         switch (direccion) {
             case 'arriba':
+                this.ultimaDireccion = direccion;
                 return this.Pf = this.Pf[1] + vert >=  windowHeight * .95
                         ? [this.Pf[0], this.Pf[1] - vert]
                         : [this.Pf[0], this.Pf[1] + vert];
 
             case 'abajo':
+                this.ultimaDireccion = direccion;
                 return this.Pf = this.Pf[1] - vert <= windowHeight * .05 
                         ? [this.Pf[0], this.Pf[1] + vert]
                         : [this.Pf[0], this.Pf[1] - vert];
 
             case 'derecha':
+                this.ultimaDireccion = direccion;
                 return this.Pf = this.Pf[0] + hor >= windowWidth * .95
                         ? [this.Pf[0] - hor, this.Pf[1]]
                         : [this.Pf[0] + hor, this.Pf[1]];
 
             case 'izquierda':
+                this.ultimaDireccion = direccion;
                 return this.Pf = this.Pf[0] - hor <= windowWidth * .05
                         ? [this.Pf[0] + hor, this.Pf[1]]
                         : [this.Pf[0] - hor, this.Pf[1]];
@@ -115,7 +124,7 @@ class Trazo {
             this.centrar();
             let cantidad = this.segmentos();
             for(let i = 0; i <= cantidad; i++) {
-                console.log(cantidad);
+               //console.log(cantidad);
                this.nuevoPi();
                this.nuevoPf();
                this.dibujaSegmento(cantidad);
