@@ -31,13 +31,13 @@ class Trazo {
     // devuelve una cantidad de segmentos para el trazo
     // :number
     segmentos() {
-        return floor(random(20,40));
+        return floor(random(8,12));
     }
 
     // devuelve una cantidad de trazos para el arte
     // :number
     trazos() {
-        return floor(random(10,20));
+        return floor(random(20,30));
     }
 
     // una suerte de reset para antes de cada trazo
@@ -56,12 +56,12 @@ class Trazo {
 
     // :number
     largoSegmentoVertical() {
-        return floor(random(height * .1));
+        return floor(random(height * .15));
     }
 
     // :number
     largoSegmentoHorizontal() {
-        return floor(random(width * .1));
+        return floor(random(width * .15));
     }
 
     // un nuevo punto final para el trazo según las reglas elegidas.
@@ -98,7 +98,7 @@ class Trazo {
 
     // :void
     cambiaColor(cant) {
-        let modificador = floor(255 / cant);
+        let modificador = floor(255 / cant *.5);
         this.colorTrazo = this.colorTrazo - modificador, 0, 0; 
         stroke(this.colorTrazo);
     }
