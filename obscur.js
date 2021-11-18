@@ -31,7 +31,7 @@ class Trazo {
     // devuelve una cantidad de segmentos para el trazo
     // :number
     segmentos() {
-        return floor(random(50));
+        return floor(random(20,40));
     }
 
     // devuelve una cantidad de trazos para el arte
