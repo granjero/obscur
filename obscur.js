@@ -31,7 +31,7 @@ class Trazo {
     // devuelve una cantidad de segmentos para el trazo
     // :number
     segmentos() {
-        return floor(random(50));
+        return floor(random(20, 50));
     }
 
     // devuelve una cantidad de trazos para el arte
@@ -71,7 +71,6 @@ class Trazo {
         let vert = this.largoSegmentoVertical();
         let hor = this.largoSegmentoHorizontal();
         let direccion = random(direcciones);
-        
 
         switch (direccion) {
             case 'arriba':
